@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="container">
+    <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Unit price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <form method="POST" action="/sell/{{ item[1] }}">
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td><button class="buttons" type="submit">Sell</button></td>
+            </form>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form method="POST" action="/addproduct">
+                <td><input type="text" value="{{ post_name }}"
+                placeholder="Product name" name="name"></td>
+                <td><input type="number" value="{{ post_quantity }}"
+                placeholder="0" name="quantity"></td>
+                <td><input type="text" value="{{ post_unit }}"
+                placeholder="Unit" name="unit"></td>
+                <td><input type="number" value="{{ post_unit_price }}"
+                placeholder="0.00" step="0.01" name="unit_price"></td>
+                <td><button class="buttons" type="submit">Add</button></td>
+            </form>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

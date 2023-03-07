@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<label>Product name for sale: {{ product_name }}</label>
+
+<form method="POST" action="/selling/{{ product_name }}">
+    <label>Quantity for sale:  </label>
+    <input type="number" placeholder="0" step="1" max="{{ result_quantity }}" name="quantity_to_sale">
+    <button type="submit">Ok</button>
+    <input type="hidden" name="product_name" value="{{ product_name }}">
+    <input type="hidden" name="idproduct" value="{{ idproduct }}">
+    <input type="hidden" name="quantity" value="{{ result_quantity }}">
+    <input type="hidden" name="unit" value="{{ unit }}">
+    <input type="hidden" name="unit_price" value="{{ unit_price }}">
+</form>
+
+{% endblock %}
